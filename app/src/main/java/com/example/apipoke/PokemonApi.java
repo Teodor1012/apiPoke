@@ -34,6 +34,7 @@ public class PokemonApi {
 
                 pokemons.add(Pokemon);
 
+
             }
 
             Log.e("XXX Pokemons XXX", result);
