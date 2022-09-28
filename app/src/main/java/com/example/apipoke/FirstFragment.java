@@ -1,6 +1,8 @@
 package com.example.apipoke;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.apipoke.databinding.FragmentFirstBinding;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class FirstFragment extends Fragment {
 
@@ -43,8 +47,33 @@ public class FirstFragment extends Fragment {
 
         binding.listview1.setAdapter(adapter);
 
+        refresh();
+
+        super.onViewCreated(view, savedInstanceState);
+
+        void refresh(){
+
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            Handler handler = new Handler(Looper.getMainLooper());
+
+            executor.execute(()->{
+
+                Pokemon api = new Pokemon();
+                ArrayList<Pokemon> Pokemons = api.getPokemons();
+
+                handler.post(() ->{
+
+                    adapter.clear();
+                    adapter.addAll(Pokemons);
 
 
+                }
+
+
+
+            }
+
+        }
 
     }
 

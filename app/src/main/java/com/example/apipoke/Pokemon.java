@@ -6,7 +6,7 @@ public class Pokemon {
     private int weight;
     private int height;
     private String image;
-
+    private String setDetailsUrl;
 
     public Pokemon(String name, int weight, int height, String image) {
         this.name = name;
