@@ -35,9 +35,9 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
-        ArrayList <String> items = new ArrayList<>();
+        ArrayList<String> items = new ArrayList<>();
 
-        ArrayAdapter <String> adapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 
                 getContext(),
                 R.layout.lv_pokemon_row,
@@ -47,28 +47,27 @@ public class FirstFragment extends Fragment {
 
         binding.listview1.setAdapter(adapter);
 
-        refresh();
+        void refresh ();
 
         super.onViewCreated(view, savedInstanceState);
 
-        void refresh(){
+        () {
 
             ExecutorService executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());
 
-            executor.execute(()->{
+            executor.execute(() -> {
 
                 Pokemon api = new Pokemon();
                 ArrayList<Pokemon> Pokemons = api.getPokemons();
 
-                handler.post(() ->{
+                handler.post(() -> {
 
                     adapter.clear();
                     adapter.addAll(Pokemons);
 
 
                 }
-
 
 
             }

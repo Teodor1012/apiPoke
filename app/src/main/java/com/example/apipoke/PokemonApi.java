@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class PokemonApi {
-    void getPokemons(){
+    void getPokemons() {
 
         String url = "https://pokeapi.co/api/v2/pokemon/";
 
-        try{
+        try {
 
             String result = HttpUtils.get(url);
 
@@ -31,6 +31,8 @@ public class PokemonApi {
 
                 pokemon1.setName(pokemonJson.getString("name"));
                 pokemon1.setDetailsUrl(pokemonJson.getString("url"));
+                pokemon1.setHeight(pokemonJson.getString("Height"));
+                pokemon1.setWeight(pokemonJson.getString("Weight"));
 
                 pokemons.add(Pokemon);
 
@@ -38,14 +40,12 @@ public class PokemonApi {
             }
 
             Log.e("XXX Pokemons XXX", result);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
 
-
     }
-
 
 
 }
